@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<robot name="simple_bot">
+	<material name="rubber">
+		<color rgba="0 0 0 1"/>
+	</material>
+	<material name="steel">
+		<color rgba="0.75 0.75 0.75 1"/>
+	</material>
+
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<box size= "0.3 0.8 0.3"/>
+			</geometry>
+			<material name="steel"/>
+		</visual>
+		<collision>
+			<geometry>
+				<box size= "0.3 0.8 0.3"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="0.0608333333"  iyy="0.015" izz="0.0608333333" ixy="0.000001" ixz="0.000001" iyz="0.000001"/>
+		</inertial>
+	</link>
+	<link name="wheel_1">
+		<visual>
+			<geometry>
+				<cylinder length="0.01" radius="0.1" />
+			</geometry>
+			<material name="rubber"/>
+			<origin rpy="0 1.57 0" xyz="0 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.01" radius="0.1"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="0.005"  iyy="0.0025" izz="0.0025" ixy="0.000001" ixz="0.000001" iyz="0.000001"/>
+		</inertial>
+	</link> 
+<!--	<joint name="Wheel1ToBase" type="fixed">
+		<parent link="base_link"/>
+		<child link="wheel_1"/>
+		<origin xyz="0.15 0.4 0"/>
+	</joint> -->
+	<joint name="Wheel1ToBaseMove" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel_1"/>
+		<axis xyz="1 0 0"/>
+		<origin xyz="0.15 0.4 -0.14"/>
+		<limit effort="30.0" velocity="3.0"/>
+	</joint>
+    	<gazebo reference="wheel_1">
+      		<mu1 value="200.0"/>
+      		<mu2 value="100.0"/>
+      		<kp value="10000000.0" />
+      		<kd value="1.0" />
+      		<material>Gazebo/Grey</material>
+    	</gazebo>
+    	<transmission name="wheel1_rotate_trans">
+      		<type>transmission_interface/SimpleTransmission</type>
+      		<actuator name="Wheel1Motor">
+        		<mechanicalReduction>1</mechanicalReduction>
+      		</actuator>
+      		<joint name="Wheel1ToBaseMove">
+        		<hardwareInterface>VelocityJointInterface</hardwareInterface>
+      		</joint>
+    	</transmission>
+	<link name="wheel_2">
+		<visual>
+			<geometry>
+				<cylinder length="0.01" radius="0.1" />
+			</geometry>
+			<material name="rubber"/>
+			<origin rpy="0 1.57 0" xyz="0 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.05" radius="0.1"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="0.005"  iyy="0.0025" izz="0.0025" ixy="0.000001" ixz="0.000001" iyz="0.000001"/>
+		</inertial>
+	</link> 
+<!--	<joint name="Wheel2ToBase" type="fixed">
+		<parent link="base_link"/>
+		<child link="wheel_2"/>
+		<origin xyz="-0.15 0.4 0"/>
+	</joint> -->
+	<joint name="Wheel2ToBaseMove" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel_2"/>
+		<axis xyz="1 0 0"/>    
+		<origin xyz="-0.15 0.4 -0.14"/>
+		<limit effort="30.0" velocity="3.0"/>
+	</joint>
+    	<gazebo reference="wheel_2">
+      		<mu1 value="200.0"/>
+      		<mu2 value="100.0"/>
+      		<kp value="10000000.0" />
+      		<kd value="1.0" />
+      		<material>Gazebo/Grey</material>
+    	</gazebo>
+    	<transmission name="wheel2_rotate_trans">
+      		<type>transmission_interface/SimpleTransmission</type>
+      		<actuator name="Wheel2Motor">
+        		<mechanicalReduction>1</mechanicalReduction>
+      		</actuator>
+      		<joint name="Wheel2ToBaseMove">
+        		<hardwareInterface>VelocityJointInterface</hardwareInterface>
+      		</joint>
+    	</transmission>
+	<link name="wheel_3">
+		<visual>
+			<geometry>
+				<cylinder length="0.01" radius="0.1" />
+			</geometry>
+			<material name="rubber"/>
+			<origin rpy="0 1.57 0" xyz="0 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.01" radius="0.1"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="0.005"  iyy="0.0025" izz="0.0025" ixy="0.000001" ixz="0.000001" iyz="0.000001"/>
+		</inertial>
+	</link> 
+<!--	<joint name="Wheel3ToBase" type="fixed">
+		<parent link="base_link"/>
+		<child link="wheel_3"/>
+		<origin xyz="0.15 -0.4 0"/>
+	</joint> -->
+	<joint name="Wheel3ToBaseMove" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel_3"/>
+		<axis xyz="1 0 0"/>
+		<origin xyz="0.15 -0.4 -0.14"/>
+		<limit effort="30.0" velocity="3.0"/>
+	</joint>
+    	<gazebo reference="wheel_3">
+      		<mu1 value="200.0"/>
+      		<mu2 value="100.0"/>
+      		<kp value="10000000.0" />
+      		<kd value="1.0" />
+      		<material>Gazebo/Grey</material>
+    	</gazebo>
+    	<transmission name="wheel3_rotate_trans">
+      		<type>transmission_interface/SimpleTransmission</type>
+      		<actuator name="Wheel3Motor">
+        		<mechanicalReduction>1</mechanicalReduction>
+      		</actuator>
+      		<joint name="Wheel3ToBaseMove">
+        		<hardwareInterface>VelocityJointInterface</hardwareInterface>
+      		</joint>
+    	</transmission>
+	<link name="wheel_4">
+		<visual>
+			<geometry>
+				<cylinder length="0.01" radius="0.1" />
+			</geometry>
+			<material name="rubber"/>
+			<origin rpy="0 1.57 0" xyz="0 0 0"/>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="0.01" radius="0.1"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="1"/>
+			<inertia ixx="0.005"  iyy="0.0025" izz="0.0025" ixy="0.000001" ixz="0.000001" iyz="0.000001"/>
+		</inertial>
+	</link> 
+<!--	<joint name="Wheel4ToBase" type="fixed">
+		<parent link="base_link"/>
+		<child link="wheel_4"/>
+		<origin xyz="-0.15 -0.4 0"/>
+	</joint>-->
+	<joint name="Wheel4ToBaseMove" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel_4"/>
+		<axis xyz="1 0 0"/>
+		<origin xyz="-0.15 -0.4 -0.14"/>
+	</joint>
+    	<gazebo reference="wheel_4">
+      		<mu1 value="200.0"/>
+      		<mu2 value="100.0"/>
+      		<kp value="10000000.0" />
+      		<kd value="1.0" />
+      		<material>Gazebo/Grey</material>
+    	</gazebo>
+    	<transmission name="wheel4_rotate_trans">
+      		<type>transmission_interface/SimpleTransmission</type>
+      		<actuator name="Wheel4Motor">
+        		<mechanicalReduction>1</mechanicalReduction>
+      		</actuator>
+      		<joint name="Wheel4ToBaseMove">
+        		<hardwareInterface>VelocityJointInterface</hardwareInterface>
+      		</joint>
+    	</transmission>
+	
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/</robotNamespace>
+		</plugin>
+	</gazebo>
+</robot>
