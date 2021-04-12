@@ -4,5 +4,14 @@ For robotics and other software based controller applications, we use Programmab
 
 Controllers can be applied in two ways:
   
-  Open-loops: In this the process of the controller is independent of the process variable, for example if we create a bot that needs to move foreward at all times with the same velocity no matter what.
-  Close-loops: In this the process variable acts as an active parameter to the controller and effects the process it undergoes. For example, If we create a bot that needs to follow a certain lane, the process variable is how the lane changes after the process that the controller undergoes. This feeds back into the controller and changes the next process it takes. Hence it forms a closed loop.
+  Open-loops: In this the process of the controller is independent of the process variable, for example if we create a bot that needs to move foreward at all times with the same       velocity no matter what.
+  Close-loops: In this the process variable acts as an active parameter to the controller and effects the process it undergoes. For example, If we create a bot that needs to           follow a certain lane, the process variable is how the lane changes after the process that the controller undergoes. This feeds back into the controller and changes the next       process it takes. Hence it forms a closed loop.
+The above is also an example of a feedback control system as it takes feedback from the process variables and changes its next outcome.
+
+ON-Off control: In this the process is either on or off and based on whether PV mathes the SP.
+
+PID controller (Propertional Integral Derivative) is a tri-controller consisting of:
+
+    Propertoional control:In this type of control, effect of the controller is propertional to the difference between the PV and the SP (PV-SP). This means that the the effort by         the controller multiplicatively decreases as the PV gets closer to the SP. This is much faster than on-off control systems as larget PV-SP leads to more effort by the             conroller, but its less accurate as it always has some error, called offset error as th PV-SP never reaches 0, just keeps getting smaller. This can be shown mathematically         like-  (NEW CONTROLLER OUTPUT)=(OLD CONTROLLER OUTPUT)+K*(PV-SP)
+    Integral control: In this type the cumelative errors are integrated over a time period and this past cumulative integral provieds info on how much effort is applied by the             controller. As the error decreases, the error is logged into the integral, hereby reducing the value of the integral, hence the effort slowly decreases. If due to the              effort inputted by the controller the error is logged in the opposte direction then it continues causing error by the integral value slowly increases again and it causes          the controller to input error ythe opposite way. This can be mathematically shown as (NEW CONTROLLER OUTPUT)=(OLD CONTROLLER OUTPUT)+K*(INTEGRAL[(PV-SP)dt])
+    
