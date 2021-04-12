@@ -1,0 +1,8 @@
+Controllers have the job of controlling and managing any device. It works by accepting environmental parameters (or Process variables) and reacts in different ways by changing the end process(or Set point) 
+For example, when we have a contoller for an air conditioner, it takes in the Process Variable of what the current ambient temprature is and then based on that the command to the cooling unit differs (Set point)
+For robotics and other software based controller applications, we use Programmable Logic controllers(PLC's).
+
+Controllers can be applied in two ways:
+  
+  Open-loops: In this the process of the controller is independent of the process variable, for example if we create a bot that needs to move foreward at all times with the same velocity no matter what.
+  Close-loops: In this the process variable acts as an active parameter to the controller and effects the process it undergoes. For example, If we create a bot that needs to follow a certain lane, the process variable is how the lane changes after the process that the controller undergoes. This feeds back into the controller and changes the next process it takes. Hence it forms a closed loop.
